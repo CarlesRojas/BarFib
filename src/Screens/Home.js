@@ -17,7 +17,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <ImageBackground
-                source = {require('../Img/2.png')}
+                source = {require('../Img/bg2.jpg')}
                 style={styles.container}>
 
                 <View style={styles.overlayContainer}>

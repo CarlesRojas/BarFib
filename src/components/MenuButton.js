@@ -17,9 +17,9 @@ export default class MenuButton extends Component {
                     style={styles.button}
                     onPress={this.props.onPress}>
                     <ImageBackground source={this.props.itemImage} style={styles.image}>
-                        <View style={styles.gradient}>
+
                             <Text style={styles.text}> {this.props.name} </Text>
-                        </View>
+
 
                     </ImageBackground>
                 </TouchableOpacity>
@@ -42,15 +42,15 @@ const styles = StyleSheet.create({
     image: {
         height: '100%',
         width: '100%',
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        alignItems: 'center',
+        justifyContent: 'flex-end'
     },
     text: {
         backgroundColor: 'transparent',
         color: '#fff',
         fontSize: 20,
-        textAlign: 'center',
+        paddingBottom: 5
     },
-    gradient:{
-        alignItems: 'flex-bottom'
-    }
+
 })
