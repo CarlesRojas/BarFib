@@ -10,20 +10,32 @@ import {
 import Header from "../components/Header";
 import InfoPanel from "../components/InfoPanel";
 import BuyButton from "../components/BuyButton";
+<<<<<<< HEAD
 import Subscription from "../components/Subscription";
+=======
+import {connect} from 'react-redux'
+import {fetchProduct} from "../actions/buyActions";
+>>>>>>> master
 
-export default class BuyScreen extends React.Component {
+class BuyScreen extends React.Component {
+    componentWillMount(){
+        this.props.fetchProduct(this.props.id)
+
+    }
     navigate = (destiny) => {
         this.props.navigation.navigate(destiny);
     }
+<<<<<<< HEAD
     select = () =>{
 
     }
+=======
+>>>>>>> master
 
     render() {
         return (
             <ImageBackground
-                source = {require('../Img/coffee_bg.png')}
+                source={require('../Img/coffee_bg.png')}
                 style={styles.container}>
 
                 <Header topImg={require('../Img/coffee.png')}/>
@@ -32,9 +44,20 @@ export default class BuyScreen extends React.Component {
                     <InfoPanel amplada={'85%'} onPress={() => {this.navigate('Home')}} ar={1210/400} name={'Coffee'} price={'1.10 €'}/>
                 </View>
 
+<<<<<<< HEAD
                 <View style={styles.buyContainer}>
                     <BuyButton amplada={'50%'} ar={1210/400}/>
                 </View>
+=======
+                    <Header topImg={require('../Img/coffee.png')}/>
+                    <View style={styles.menuContainer}>
+                        <InfoPanel amplada={'85%'} onPress={() => {
+                            this.navigate('Home')
+                        }} ar={1210 / 400} name={this.props.product ? this.props.product.name : ''}
+                                   price={this.props.product ? this.props.product.price : ''}/>
+                        <BuyButton amplada={'85%'} ar={1210 / 400}/>
+                    </View>
+>>>>>>> master
 
                 <View style={styles.subsContainer}>
                     <Subscription amplada={'90%'} ar={1210/220} infoSub={'1 coffee/day   25€/month'}/>
@@ -47,8 +70,15 @@ export default class BuyScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
     container:{
         width:  '100%',
+=======
+    container: {
+        justifyContent: 'center',
+        flex: 1,
+        width: '100%',
+>>>>>>> master
         height: '100%',
     },
     infoContainer: {
@@ -74,3 +104,19 @@ const styles = StyleSheet.create({
         justifyContent:'flex-end'
     }
 });
+
+const mapStateToProps = (state, ownProps) => {
+    console.log(ownProps)
+    return {
+        product: state.buy.product,
+        id: ownProps.navigation.state.params
+    }
+}
+
+const  mapDispatchToProps = (dispatch)=>{
+    return {
+        fetchProduct: (id)=>dispatch(fetchProduct(id))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BuyScreen)

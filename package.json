@@ -15,7 +15,10 @@
     "react-dom": "^16.5.2",
     "react-native": "https://github.com/expo/react-native/archive/sdk-30.0.0.tar.gz",
     "react-native-modal-datetime-picker": "^6.0.0",
-    "react-navigation": "^2.18.0"
+    "react-navigation": "^2.18.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
