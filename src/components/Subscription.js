@@ -7,49 +7,52 @@ import {
     ImageBackground,
 } from 'react-native'
 
+const whiteImage = require('../Img/subscription_white.png')
+const greenImage = require('../Img/subscription_green.png')
+
 export default class Subscription extends Component {
+
+    state = {
+        buttonImage: whiteImage
+    };
+
+    subscribe = () => this.setState({ buttonImage: greenImage });
 
     render() {
         return (
-            <View style={[styles.menuItem, {width: this.props.amplada}, {aspectRatio: this.props.ar}]}>
+            <View style={[styles.container, {width: this.props.amplada}, {aspectRatio: this.props.ar}]}>
                 <TouchableOpacity
-                    style={styles.button}
-                    onPress={this.props.onPress}>
-                    <ImageBackground source={this.props.itemImage} style={styles.image}>
-
-                        <Text style={styles.text}> {this.props.name} </Text>
-
-
+                    onPress={this.subscribe}
+                    style={styles.button}>
+                    <ImageBackground source={this.state.buttonImage} style={[styles.image, {aspectRatio: this.props.ar}]}>
+                        <Text style={styles.text}> {this.props.infoSub} </Text>
                     </ImageBackground>
                 </TouchableOpacity>
             </View>
+
         )
     }
 }
 
 const styles = StyleSheet.create({
+    container:{
+        marginBottom: '5%',
+    },
     button: {
         alignItems: 'center',
         backgroundColor: 'transparent'
     },
-    menuItem: {
-        height: '33.33333%',
-        paddingRight: 10,
-        paddingBottom: 10,
-        backgroundColor: 'transparent'
-    },
     image: {
-        height: '100%',
         width: '100%',
         backgroundColor: 'transparent',
         alignItems: 'center',
-        justifyContent: 'flex-end'
     },
     text: {
+        padding: '5%',
         backgroundColor: 'transparent',
-        color: '#fff',
+        color: '#000',
         fontSize: 20,
-        paddingBottom: 5
+        textAlign:'center'
     },
 
 })

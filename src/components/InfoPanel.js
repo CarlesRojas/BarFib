@@ -61,12 +61,7 @@ export default class InfoPanel extends Component {
 }
 
 const styles = StyleSheet.create({
-    button: {
-        alignItems: 'center',
-        backgroundColor: 'transparent'
-    },
     menuItem: {
-        height: '33.33333%',
         backgroundColor: 'transparent',
     },
     image: {
@@ -88,7 +83,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: '100%',
         height: '50%',
-        paddingLeft: 10,
         flexDirection: 'row',
         flexWrap: 'wrap',
     },
@@ -104,7 +98,6 @@ const styles = StyleSheet.create({
         width: '70%',
         paddingTop: 10,
         paddingLeft: '25%',
-
     },
 
 })

@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
         height: '30%',
         alignItems: 'center',
         backgroundColor: 'transparent',
-        justifyContent: 'flex-end'
     },
     text: {
         backgroundColor: 'transparent',

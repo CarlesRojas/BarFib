@@ -8,25 +8,25 @@ import {
     ImageBackground,
 } from 'react-native'
 
-const blueImage = require('../Img/buy_blue.png')
+const whiteImage = require('../Img/buy_white.png')
 const greenImage = require('../Img/buy_green.png')
 
 export default class BuyButton extends Component {
 
     state = {
-        buttonImage: blueImage,
+        buttonImage: whiteImage,
+        buyText: 'Buy'
     };
 
-    buyProduct = () => this.setState({ buttonImage: greenImage });
+    buyProduct = () => this.setState({ buttonImage: greenImage, buyText: 'Done' });
 
     render() {
         return (
-            <View style={[styles.menuItem, {width: this.props.amplada}, {aspectRatio: this.props.ar}]}>
+            <View style={[{width: this.props.amplada}, {aspectRatio: this.props.ar}]}>
                 <TouchableOpacity
-                    onPress={this.buyProduct}
-                    style={styles.button}>
-                    <ImageBackground source={this.state.buttonImage} style={[styles.image, {aspectRatio: this.props.ar}]}>
-                        <Text style={styles.title}> Compra </Text>
+                    onPress={this.buyProduct}>
+                    <ImageBackground source={this.state.buttonImage} style={styles.image}>
+                        <Text style={styles.title}> {this.state.buyText} </Text>
                     </ImageBackground>
                 </TouchableOpacity>
             </View>
@@ -35,19 +35,12 @@ export default class BuyButton extends Component {
 }
 
 const styles = StyleSheet.create({
-    button: {
-        alignItems: 'center',
-        backgroundColor: 'transparent'
-    },
-    menuItem: {
-        height: '33.33333%',
-        backgroundColor: 'transparent',
-    },
     image:{
-        marginTop: '10%',
-        width: '60%',
+        width: '100%',
+        height: '100%',
         backgroundColor: 'transparent',
         alignItems: 'center',
+        justifyContent: 'center',
     },
     title: {
         width: '100%',
@@ -56,7 +49,6 @@ const styles = StyleSheet.create({
         color: '#000',
         fontSize: 20,
         textAlign: 'center'
-
     },
 
 })
