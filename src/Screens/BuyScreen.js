@@ -38,26 +38,19 @@ class BuyScreen extends React.Component {
                 source={require('../Img/coffee_bg.png')}
                 style={styles.container}>
 
-                <Header topImg={require('../Img/coffee.png')}/>
+        <Header topImg={require('../Img/coffee.png')}/>
+        <View style={styles.menuContainer}>
+        <InfoPanel amplada={'85%'} onPress={() => {
+            this.navigate('Home')
+        }} ar={1210 / 400} name={this.props.product ? this.props.product.name : ''}
+        price={this.props.product ? this.props.product.price : ''}/>
+        <BuyButton amplada={'85%'} ar={1210 / 400}/>
+        </View>
 
-                <View style={styles.infoContainer}>
-                    <InfoPanel amplada={'85%'} onPress={() => {this.navigate('Home')}} ar={1210/400} name={'Coffee'} price={'1.10 €'}/>
-                </View>
-
-<<<<<<< HEAD
                 <View style={styles.buyContainer}>
                     <BuyButton amplada={'50%'} ar={1210/400}/>
                 </View>
-=======
-                    <Header topImg={require('../Img/coffee.png')}/>
-                    <View style={styles.menuContainer}>
-                        <InfoPanel amplada={'85%'} onPress={() => {
-                            this.navigate('Home')
-                        }} ar={1210 / 400} name={this.props.product ? this.props.product.name : ''}
-                                   price={this.props.product ? this.props.product.price : ''}/>
-                        <BuyButton amplada={'85%'} ar={1210 / 400}/>
-                    </View>
->>>>>>> master
+
 
                 <View style={styles.subsContainer}>
                     <Subscription amplada={'90%'} ar={1210/220} infoSub={'1 coffee/day   25€/month'}/>
@@ -70,15 +63,10 @@ class BuyScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-<<<<<<< HEAD
-    container:{
-        width:  '100%',
-=======
     container: {
         justifyContent: 'center',
         flex: 1,
         width: '100%',
->>>>>>> master
         height: '100%',
     },
     infoContainer: {

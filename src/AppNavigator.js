@@ -4,13 +4,6 @@ import Coffee from './Screens/BuyScreen';
 
 
 const AppNavigator = createStackNavigator({
-<<<<<<< HEAD
-=======
-    Home: {screen: Home},
-    Coffee: {screen: Coffee},
-
->>>>>>> master
-
     Home: {screen: Home},
     Coffee: {screen: Coffee},
 },{ headerMode: 'none'})
