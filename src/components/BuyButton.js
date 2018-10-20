@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
     StyleSheet,
     TouchableOpacity,
@@ -12,6 +13,15 @@ export default class BuyButton extends Component {
 
     state = {
         isDateTimePickerVisible: false,
+    };
+
+    _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
+
+    _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
+
+    _handleDatePicked = (date) => {
+        console.log('A date has been picked: ', date);
+        this._hideDateTimePicker();
     };
 
     render() {
@@ -28,6 +38,12 @@ export default class BuyButton extends Component {
                                     onPress={this._showDateTimePicker}
                                     title="NOW"
                                     color="#5D5D5D"
+                                />
+                                <DateTimePicker
+                                    isVisible={this.state.isDateTimePickerVisible}
+                                    mode={'time'}
+                                    onConfirm={this._handleDatePicked}
+                                    onCancel={this._hideDateTimePicker}
                                 />
                             </View>
                         </View>
