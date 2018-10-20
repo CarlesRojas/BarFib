@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
         flex: 1,
         width:  '100%',
         height: '100%',
-        backgroundColor: 'rgba(47,163,218, .4)',
+        backgroundColor: 'transparent',
     },
     menuContainer: {
         width: '100%',

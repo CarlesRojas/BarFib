@@ -17,10 +17,7 @@ export default class MenuButton extends Component {
                     style={styles.button}
                     onPress={this.props.onPress}>
                     <ImageBackground source={this.props.itemImage} style={styles.image}>
-
                             <Text style={styles.text}> {this.props.name} </Text>
-
-
                     </ImageBackground>
                 </TouchableOpacity>
             </View>

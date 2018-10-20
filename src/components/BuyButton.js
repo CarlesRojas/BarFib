@@ -3,60 +3,32 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import {
     StyleSheet,
     TouchableOpacity,
-    Button,
     Text,
     View,
     ImageBackground,
 } from 'react-native'
 
+const blueImage = require('../Img/buy_blue.png')
+const greenImage = require('../Img/buy_green.png')
+
 export default class BuyButton extends Component {
 
     state = {
-        isDateTimePickerVisible: false,
-        pickUpTime: 'NOW',
+        buttonImage: blueImage,
     };
 
-    _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
-
-    _hideDateTimePicker = () => this.setState({ isDateTimePickerVisible: false });
-
-    _handleDatePicked = (date) => {
-        console.log('A date has been picked: ', date);
-        const date2 = new Date(date);
-
-
-        this._hideDateTimePicker();
-        this.setState({pickUpTime: `${date2.getHours()}:${date2.getMinutes()}`})
-    };
+    buyProduct = () => this.setState({ buttonImage: greenImage });
 
     render() {
         return (
             <View style={[styles.menuItem, {width: this.props.amplada}, {aspectRatio: this.props.ar}]}>
-                <ImageBackground source={require('../Img/whiteWideButton2.png')} style={styles.image}>
-
-                    <Text style={styles.title}> {this.props.name}  </Text>
-                    <View style={styles.menuContainer}>
-                        <Text style={styles.subtitle}> {this.props.price} </Text>
-
-                        <View style={[{width: "50%"} , {paddingBottom: 15}]}>
-                            <View style={styles.timePicker}>
-                                <Button
-                                    onPress={this._showDateTimePicker}
-                                    title= {this.state.pickUpTime}
-                                    color="#5D5D5D"
-                                    margin
-                                />
-                                <DateTimePicker
-                                    isVisible={this.state.isDateTimePickerVisible}
-                                    mode={'time'}
-                                    onConfirm={this._handleDatePicked}
-                                    onCancel={this._hideDateTimePicker}
-                                />
-                            </View>
-                        </View>
-
-                    </View>
-                </ImageBackground>
+                <TouchableOpacity
+                    onPress={this.buyProduct}
+                    style={styles.button}>
+                    <ImageBackground source={this.state.buttonImage} style={[styles.image, {aspectRatio: this.props.ar}]}>
+                        <Text style={styles.title}> Compra </Text>
+                    </ImageBackground>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -69,13 +41,11 @@ const styles = StyleSheet.create({
     },
     menuItem: {
         height: '33.33333%',
-        paddingRight: 10,
-        paddingBottom: 10,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
     },
-    image: {
-        height: '100%',
-        width: '100%',
+    image:{
+        marginTop: '10%',
+        width: '60%',
         backgroundColor: 'transparent',
         alignItems: 'center',
     },
@@ -84,33 +54,8 @@ const styles = StyleSheet.create({
         height: '50%',
         backgroundColor: 'transparent',
         color: '#000',
-        fontSize: 30,
-        paddingTop: 10,
-        textAlign: 'center'
-
-    },
-    menuContainer: {
-        justifyContent: 'center',
-        width: '100%',
-        height: '50%',
-        paddingLeft: 10,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    },
-    subtitle: {
-        width: '50%',
-        backgroundColor: 'transparent',
-        color: '#636363',
         fontSize: 20,
-        paddingTop: 10,
         textAlign: 'center'
-    },
-
-
-    timePicker: {
-        width: '70%',
-        paddingTop: 10,
-        paddingLeft: '25%',
 
     },
 

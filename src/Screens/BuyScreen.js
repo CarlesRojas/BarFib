@@ -6,6 +6,7 @@ import {
     ImageBackground, ScrollView, Dimensions
 } from 'react-native';
 import Header from "../components/Header";
+import InfoPanel from "../components/InfoPanel";
 import BuyButton from "../components/BuyButton";
 
 export default class BuyScreen extends React.Component {
@@ -15,19 +16,16 @@ export default class BuyScreen extends React.Component {
     render() {
         return (
             <ImageBackground
-                source = {require('../Img/bg2.jpg')}
+                source = {require('../Img/coffee_bg.png')}
                 style={styles.container}>
 
                 <View style={styles.overlayContainer}>
 
                     <Header topImg={require('../Img/coffee.png')}/>
                     <View style={styles.menuContainer}>
-                        <BuyButton amplada={'90%'} onPress={() => {this.navigate('Home')}} ar={1210/422} name={'Café'} price={'1.10 €'}/>
+                        <InfoPanel amplada={'85%'} onPress={() => {this.navigate('Home')}} ar={1210/400} name={'Café'} price={'1.10 €'}/>
+                        <BuyButton amplada={'85%'} ar={1210/400}/>
                     </View>
-
-                    <ScrollView>
-
-                    </ScrollView>
 
                 </View>
             </ImageBackground>
@@ -44,14 +42,11 @@ const styles = StyleSheet.create({
     },
     overlayContainer: {
         flex: 1,
-        backgroundColor: 'rgba(47,163,218, .4)',
+        backgroundColor: 'transparent',
     },
     menuContainer: {
         justifyContent: 'center',
         width: '100%',
-        height: (((Dimensions.get('window').width * 3) - 90) / 2) + 40,
-        paddingLeft: 10,
-        paddingTop: 10,
         flexDirection: 'row',
         flexWrap: 'wrap',
         marginTop: '-15%'
