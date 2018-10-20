@@ -1,27 +1,28 @@
 import React, { Component } from 'react'
 import {
-    AppRegistry,
     StyleSheet,
     TouchableOpacity,
     Text,
-    View, Image,
+    View,
+    ImageBackground,
 } from 'react-native'
 
 export default class MenuButton extends Component {
 
 
-    onPress = () => {
-
-    }
-
     render() {
         return (
-            <View style={[styles.menuItem, {width: this.props.amplada}]}>
+            <View style={[styles.menuItem, {width: this.props.amplada}, {aspectRatio: this.props.ar}]}>
                 <TouchableOpacity
-                    style={styles.button} onPress={this.onPress}>
-                    <Image source={this.props.itemImage} style={styles.image} />
-                </TouchableOpacity>
+                    style={styles.button}
+                    onPress={this.props.onPress}>
+                    <ImageBackground source={this.props.itemImage} style={styles.image}>
+                        <View style={styles.gradient}>
+                            <Text style={styles.text}> {this.props.name} </Text>
+                        </View>
 
+                    </ImageBackground>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -30,18 +31,26 @@ export default class MenuButton extends Component {
 const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
-        backgroundColor: '#828282'
+        backgroundColor: 'transparent'
     },
     menuItem: {
         height: '33.33333%',
         paddingRight: 10,
-        paddingBottom: 10
+        paddingBottom: 10,
+        backgroundColor: 'transparent'
     },
-
     image: {
+        height: '100%',
         width: '100%',
-        height: '100%'
+        backgroundColor: 'transparent'
+    },
+    text: {
+        backgroundColor: 'transparent',
+        color: '#fff',
+        fontSize: 20,
+        textAlign: 'center',
+    },
+    gradient:{
+        alignItems: 'flex-bottom'
     }
 })
-
-//AppRegistry.registerComponent('App', () => App)
