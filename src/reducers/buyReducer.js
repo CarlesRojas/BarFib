@@ -12,6 +12,11 @@ export const buyReducer = (state=INITIAL_STATE,action) =>{
            return {
                ...state,
                product: action.payload
+       }
+       case ACTIONS.RequestProduct:
+           return {
+               ...state,
+               product: null
            }
 
        default:
