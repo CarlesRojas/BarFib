@@ -6,13 +6,14 @@ import {
     Button,
     Text,
     View,
-    ImageBackground, Dimensions,
+    ImageBackground,
 } from 'react-native'
 
 export default class BuyButton extends Component {
 
     state = {
         isDateTimePickerVisible: false,
+        pickUpTime: 'NOW',
     };
 
     _showDateTimePicker = () => this.setState({ isDateTimePickerVisible: true });
@@ -21,7 +22,11 @@ export default class BuyButton extends Component {
 
     _handleDatePicked = (date) => {
         console.log('A date has been picked: ', date);
+        const date2 = new Date(date);
+
+
         this._hideDateTimePicker();
+        this.setState({pickUpTime: `${date2.getHours()}:${date2.getMinutes()}`})
     };
 
     render() {
@@ -29,15 +34,17 @@ export default class BuyButton extends Component {
             <View style={[styles.menuItem, {width: this.props.amplada}, {aspectRatio: this.props.ar}]}>
                 <ImageBackground source={require('../Img/whiteWideButton2.png')} style={styles.image}>
 
-                    <Text style={styles.title}> {this.props.name} </Text>
+                    <Text style={styles.title}> {this.props.name}  </Text>
                     <View style={styles.menuContainer}>
                         <Text style={styles.subtitle}> {this.props.price} </Text>
-                        <View style={[{width: "50%"}]}>
-                            <View style={styles.timePicker2}>
+
+                        <View style={[{width: "50%"} , {paddingBottom: 15}]}>
+                            <View style={styles.timePicker}>
                                 <Button
                                     onPress={this._showDateTimePicker}
-                                    title="NOW"
+                                    title= {this.state.pickUpTime}
                                     color="#5D5D5D"
+                                    margin
                                 />
                                 <DateTimePicker
                                     isVisible={this.state.isDateTimePickerVisible}
@@ -47,6 +54,7 @@ export default class BuyButton extends Component {
                                 />
                             </View>
                         </View>
+
                     </View>
                 </ImageBackground>
             </View>
@@ -99,11 +107,11 @@ const styles = StyleSheet.create({
     },
 
 
-    timePicker2: {
+    timePicker: {
         width: '70%',
         paddingTop: 10,
         paddingLeft: '25%',
-        textAlign: 'center'
+
     },
 
 })
