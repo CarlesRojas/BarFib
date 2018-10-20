@@ -1,11 +1,12 @@
 import { createStackNavigator } from 'react-navigation';
 import Home from './Screens/Home';
-import Coffee from './Screens/Coffee';
+import Coffee from './Screens/BuyScreen';
 
 
 const AppNavigator = createStackNavigator({
-    Home: {screen: Home},
     Coffee: {screen: Coffee},
+    Home: {screen: Home},
+
 },{ headerMode: 'none'})
 
 
