@@ -24,7 +24,7 @@ export default class Home extends React.Component {
                     <View style={styles.top}>
                         <Text style={styles.header}>BARFIB</Text>
                     </View>
-                    <ScrollView>
+                    <ScrollView style={[styles.fixed, {backgroundColor: 'transparent'}]}>
                         <View style={styles.menuContainer}>
                             <MenuButton itemImage={require('../Img/pizza.png')} amplada={'100%'} onPress={() => {this.navigate('Coffee')}} ar={1210/617} name={'Plat del dia: Pizza'}/>
                             <MenuButton itemImage={require('../Img/coffee.png')} amplada={'50%'}  onPress={() => {this.navigate('Coffee')}} ar={1} name={'Café'}/>
@@ -48,13 +48,18 @@ const styles = StyleSheet.create({
 
     },
     overlayContainer: {
+
         flex: 1,
-        backgroundColor: 'rgba(47,163,218, .4)'
+        backgroundColor: 'rgba(47,163,218, .4)',
+
     },
     top: {
         height: '25%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: 'transparent',
+
+
     },
     header: {
         color: '#fff',
