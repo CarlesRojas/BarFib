@@ -12,40 +12,40 @@ import InfoPanel from "../components/InfoPanel";
 import BuyButton from "../components/BuyButton";
 import Subscription from "../components/Subscription";
 import {connect} from 'react-redux'
-import {fetchProduct} from "../actions/buyActions";
+import {fetchProduct} from "../actions/homeActions";
+import {IMAGES_HEADER} from "../constants";
 
 class BuyScreen extends React.Component {
-    componentWillMount(){
-        this.props.fetchProduct(this.props.id)
-
-    }
     navigate = (destiny) => {
         this.props.navigation.navigate(destiny);
     }
-    select = () =>{
-
-    }
 
     render() {
+
+        const productName = this.props.product.day? 'daily special': this.props.product.name
+        const productPriceMonth = this.props.product.price * 20
+        const productPriceDay = this.props.product.price * 4
         return (
+
             <ImageBackground
                 source = {require('../Img/coffee_bg.png')}
                 style={styles.container}>
 
-                <Header topImg={require('../Img/coffee.png')}/>
+                <Header topImg={IMAGES_HEADER[this.props.product.id]}/>
 
                 <View style={styles.infoContainer}>
-                    <InfoPanel amplada={'85%'} onPress={() => {this.navigate('Home')}} ar={1210/400}  name={this.props.product ? this.props.product.name : ''}
-                               price={this.props.product ? this.props.product.price : ''}/>
+                    <InfoPanel amplada={'85%'} onPress={() => {this.navigate('Home')}} ar={1210/400}  name={this.props.product.day? 'plat del dia:'+this.props.product.name: this.props.product.name}
+                               price={this.props.product ? this.props.product.price+'€' : ''}/>
                 </View>
 
                 <View style={styles.buyContainer}>
                     <BuyButton amplada={'50%'} ar={1210/400}/>
                 </View>
 
+
                 <View style={styles.subsContainer}>
-                    <Subscription amplada={'90%'} ar={1210/220} infoSub={'1 coffee/day   25€/month'}/>
-                    <Subscription amplada={'90%'} ar={1210/220} infoSub={'5 coffees/week   5€/week'}/>
+                    <Subscription amplada={'90%'} ar={1210/220} infoSub={'1 '+productName+'/day   '+productPriceMonth+'€/month'}/>
+                    <Subscription amplada={'90%'} ar={1210/220} infoSub={'5 '+productName+'/week   '+productPriceDay+'€/week'}/>
                 </View>
 
             </ImageBackground>
@@ -82,16 +82,14 @@ const styles = StyleSheet.create({
     }
 });
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps)
     return {
-        product: state.buy.product,
-        id: ownProps.navigation.state.params
+        product: ownProps.navigation.state.params
     }
 }
 
 const  mapDispatchToProps = (dispatch)=>{
     return {
-        fetchProduct: (id)=>dispatch(fetchProduct(id))
+
     }
 }
 

@@ -1,10 +1,14 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux'
-import {buyReducer} from "./reducers/";
+import {homeReducer} from "./reducers/";
 import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 const rootReducer = combineReducers({
-    buy:buyReducer
+    home:homeReducer
 })
 
-const store= createStore(rootReducer,applyMiddleware(thunk))
+const store= createStore(
+    rootReducer,
+    applyMiddleware(thunk, logger)
+);
 
 export {store}

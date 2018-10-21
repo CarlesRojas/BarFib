@@ -8,30 +8,42 @@ import {
     ScrollView
 } from 'react-native';
 
-import MenuButton from'../components/MenuButton'
-import Subscription from "../components/Subscription";
+import MenuButton from '../components/MenuButton'
+import {connect} from 'react-redux'
+import {fetchProducts} from "../actions/homeActions";
+import {IMAGES_HEADER} from "../constants";
 import TodayOrder from "../components/TodayOrder";
 
-export default class Home extends React.Component {
+const mockImage = require('../Img/coffee.png')
 
-    navigate = (destiny, id) => {
-        this.props.navigation.navigate(destiny,id);
+class Home extends React.Component {
+    componentWillMount() {
+        this.props.fetchProducts()
+    }
+
+    navigate = (destiny, params) => {
+        console.log(params);
+        this.props.navigation.navigate(destiny, params);
     }
     render() {
         return (
             <ImageBackground
-                source = {require('../Img/bg2.jpg')}
+                source={require('../Img/bg2.jpg')}
                 style={styles.container}>
 
                 <ScrollView>
                     <View style={styles.menuContainer}>
                         <Image source={require('../Img/BarFib.png')} style={styles.logo}/>
+                        {
+                            this.props.products.map((product) => {
+                                return (
+                                    <MenuButton key={`product_${product.id}`} itemImage={IMAGES_HEADER[product.id]} amplada={product.day?'100%':'50%'} onPress={() => {
+                                        this.navigate('BuyScreen', product)
+                                    }} ar={product.day?1210 / 617:1} name={product.day? 'daily special:'+product.name: product.name}/>
 
-                        <MenuButton itemImage={require('../Img/pizza.png')} amplada={'100%'} onPress={() => {this.navigate('Coffee',1)}} ar={1210/617} name={'Plat del dia: Pizza'}/>
-                        <MenuButton itemImage={require('../Img/coffee.png')} amplada={'50%'}  onPress={() => {this.navigate('Coffee',2)}} ar={1} name={'Café'}/>
-                        <MenuButton itemImage={require('../Img/beer.png')} amplada={'50%'}  onPress={() => {this.navigate('Coffee',3)}} ar={1} name={'Cervesa'}/>
-                        <MenuButton itemImage={require('../Img/braves.png')} amplada={'50%'}  onPress={() => {this.navigate('Coffee',4)}} ar={1} name={'Braves'}/>
-                        <MenuButton itemImage={require('../Img/burger.png')} amplada={'50%'}  onPress={() => {this.navigate('Coffee',5)}} ar={1} name={'FiberBurger'}/>
+                                )
+                            })
+                        }
 
                     </View>
 
@@ -79,3 +91,16 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 });
+const mapStateToProps = (state) => {
+    return {
+        products: state.home.products
+    }
+}
+
+const  mapDispatchToProps = (dispatch)=>{
+    return {
+        fetchProducts: ()=>dispatch(fetchProducts())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

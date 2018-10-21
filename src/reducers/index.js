@@ -1,1 +1,1 @@
-export * from './buyReducer'
+export * from './homeReducer'

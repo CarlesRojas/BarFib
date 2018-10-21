@@ -1,14 +1,14 @@
 import { createStackNavigator } from 'react-navigation';
 import Home from './Screens/Home';
-import Coffee from './Screens/BuyScreen';
+import BuyScreen from './Screens/BuyScreen';
 import QRScreen from './Screens/QRScreen';
 
 
 const AppNavigator = createStackNavigator({
     Home: {screen: Home},
+    BuyScreen: {screen: BuyScreen},
     QRScreen:{screen: QRScreen},
-    Coffee: {screen: Coffee},
 },{ headerMode: 'none'})
 
 
-export default AppNavigator;663.
+export default AppNavigator;
