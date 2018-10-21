@@ -9,7 +9,7 @@ export default class Header extends Component {
 
     render() {
         return (
-            <ImageBackground source={this.props.topImg} style={styles.topImage}>
+            <ImageBackground source={this.props.topImg} style={[styles.topImage, {height: this.props.height}]}>
                 <Text style={styles.text}> {this.props.name} </Text>
             </ImageBackground>
         )
@@ -19,7 +19,6 @@ export default class Header extends Component {
 const styles = StyleSheet.create({
     topImage: {
         width: '100%',
-        height: '30%',
         alignItems: 'center',
         backgroundColor: 'transparent',
     },

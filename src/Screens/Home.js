@@ -53,8 +53,6 @@ class Home extends React.Component {
                         <TodayOrder amplada={'95%'} ar={1210/220} infoSub={'1 FiberBurger'} onPress={() => {this.props.navigation.navigate('QRScreen')}}/>
                     </View>
 
-
-
                 </ScrollView>
             </ImageBackground>
         );
